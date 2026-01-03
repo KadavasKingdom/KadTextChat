@@ -20,6 +20,12 @@ public class Yell : ICommand
 
     public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
     {
+        if (!PluginMain.Instance.Config.clientCommandsEnabled)
+        {
+            response = "Client commands are disabled!";
+            return false;
+        }
+
         if (sender is not PlayerCommandSender playerSender)
         {
             response = "This command can only be ran by a player!";

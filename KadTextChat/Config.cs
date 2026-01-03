@@ -3,6 +3,7 @@
 public class Config
 {
     public bool Debug { get; set; }
+    public bool clientCommandsEnabled { get; set; } = false;
     public int maxMessageLength { get; set; } = 80;
     public int maxWhisperLength { get; set; } = 20;
     public int maxYellLength { get; set; } = 40;
