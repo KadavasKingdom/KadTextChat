@@ -17,6 +17,8 @@ public class PluginMain : Plugin<Config>
     {
         Instance = this;
         AudioClipStorage.LoadClip(CustomAudioHub.Hub.MakeFilePath(PluginMain.Instance.Config.speakSFX), "speakingSFX");
+        AudioClipStorage.LoadClip(CustomAudioHub.Hub.MakeFilePath(PluginMain.Instance.Config.speak049SFX), "speaking049SFX");
+        AudioClipStorage.LoadClip(CustomAudioHub.Hub.MakeFilePath(PluginMain.Instance.Config.speak0492SFX), "speaking0492SFX");
     }
 
     public override void Disable()

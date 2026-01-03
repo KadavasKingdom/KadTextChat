@@ -1,4 +1,5 @@
 ﻿using CommandSystem;
+using PlayerRoles;
 using RemoteAdmin;
 using ICommand = CommandSystem.ICommand;
 
@@ -28,6 +29,12 @@ public class Yell : ICommand
         if (arguments.Count == 0)
         {
             response = "You must provide a message to say!";
+            return false;
+        }
+
+        if (!playerSender.ReferenceHub.IsHuman() && playerSender.ReferenceHub.GetRoleId() != RoleTypeId.Scp049 && playerSender.ReferenceHub.GetRoleId() != RoleTypeId.Scp0492)
+        {
+            response = "This command is only supported for humans, SCP-049 and SCP-049-2!";
             return false;
         }
 

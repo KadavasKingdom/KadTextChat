@@ -1,4 +1,5 @@
 ﻿using CommandSystem;
+using PlayerRoles;
 using RemoteAdmin;
 using ICommand = CommandSystem.ICommand;
 
@@ -24,6 +25,13 @@ public class Talk : ICommand
             response = "This command can only be ran by a player!";
             return false;
         }
+
+        if (!playerSender.ReferenceHub.IsHuman() && playerSender.ReferenceHub.GetRoleId() != RoleTypeId.Scp049 && playerSender.ReferenceHub.GetRoleId() != RoleTypeId.Scp0492)
+        {
+            response = "This command is only supported for humans, SCP-049 and SCP-049-2!";
+            return false;
+        }
+
 
         if (arguments.Count == 0)
         {
@@ -60,7 +68,10 @@ public class Talk : ICommand
 
         response = $"error";
         return false;
+
     }
+
+
 }
 
 
