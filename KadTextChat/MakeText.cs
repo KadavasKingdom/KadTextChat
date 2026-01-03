@@ -1,9 +1,11 @@
-﻿using MEC;
+﻿using LabApi.Features.Wrappers;
+using LabApiExtensions.FakeExtension;
+using MEC;
 using UnityEngine;
 
 namespace KadTextChat;
 
-public class MakeText
+public class MakeText : MonoBehaviour
 {
     public Dictionary<Player, TextToyInfoStore> playerTextBoxes = new Dictionary<Player, TextToyInfoStore>();
     public enum TextType
@@ -112,6 +114,39 @@ public class MakeText
                 playerTextBoxes[talkingPlayer].textToy = null;
             }
         });
+    }
+
+    //Ty Lumi and Slej - stole this from their TextChat plugin
+    public void Update()
+    {
+        CL.Info("a");
+        foreach (var kvp in playerTextBoxes)
+        {
+            if (kvp.Value.textToy.IsDestroyed)
+                return;
+
+            foreach (Player player in Player.ReadyList.Where(p => p != kvp.Key))
+            {
+                if (Vector3.Distance(kvp.Key.GameObject.transform.position, player.Position) > 20)
+                {
+                    player.SendFakeSyncVar(kvp.Value.textToy.Base, 4, Vector3.zero);
+                    continue;
+                }
+
+                player.SendFakeSyncVar(kvp.Value.textToy.Base, 4, Vector3.one);
+                FaceTowardsPlayer(player, kvp.Key.GameObject.transform, kvp.Value.textToy);
+            }
+        }
+    }
+
+    public void FaceTowardsPlayer(Player observer, Transform transform, TextToy textToy)
+    {
+        Vector3 direction = observer.Position - transform.position;
+        direction.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(-direction);
+        transform.rotation = rotation;
+
+        observer.SendFakeSyncVar(textToy.Base, 2, transform.localRotation);
     }
 }
 
