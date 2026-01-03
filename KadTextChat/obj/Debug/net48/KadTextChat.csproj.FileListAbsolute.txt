@@ -1,0 +1,12 @@
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.csproj.AssemblyReference.cache
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.IgnoresAccessChecksTo.cs
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.GeneratedMSBuildEditorConfig.editorconfig
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.AssemblyInfoInputs.cache
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.AssemblyInfo.cs
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.csproj.CoreCompileInputs.cache
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\bin\Debug\net48\KadTextChat.dll
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\bin\Debug\net48\KadTextChat.pdb
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\bin\Debug\net48\CommandSystem.Core.dll
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextC.ACB6A406.Up2Date
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.dll
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.pdb
