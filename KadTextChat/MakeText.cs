@@ -5,9 +5,7 @@ namespace KadTextChat;
 
 public class MakeText
 {
-    private Dictionary<Player, TextToy> playerTextBoxes = new();
-    private AudioPlayer talkerAudioPlayer;
-    private Speaker audioSpeaker;
+    public Dictionary<Player, TextToyInfoStore> playerTextBoxes = new Dictionary<Player, TextToyInfoStore>();
     public enum TextType
     {
         Normal,
@@ -17,30 +15,72 @@ public class MakeText
 
     public bool CreateTextBox(Player talkingPlayer, string message, TextType type)
     {
-        int messageLength = message.Length;
-
+        CL.Info("1");
         if (!playerTextBoxes.ContainsKey(talkingPlayer))
-            playerTextBoxes.Add(talkingPlayer, null);
+            playerTextBoxes.Add(talkingPlayer, new TextToyInfoStore());
+        CL.Info("2");
+        //Creating Text Toy
 
-        if (playerTextBoxes[talkingPlayer] != null)
-        {
-            playerTextBoxes[talkingPlayer].Destroy();
-        }
+        if (playerTextBoxes[talkingPlayer].textToy != null || !playerTextBoxes[talkingPlayer].textToy.IsDestroyed)
+            playerTextBoxes[talkingPlayer].textToy.Destroy();
 
-        playerTextBoxes[talkingPlayer] = TextToy.Create(
+        CL.Info("3");
+        playerTextBoxes[talkingPlayer].textToy = TextToy.Create(
             position: new Vector3(0f, talkingPlayer.GameObject.transform.localScale.y + 0.3f, 0f),
             parent: talkingPlayer.GameObject.transform,
             rotation: new Quaternion(0, 0, 0, 0),
             scale: new Vector3(-.14f, .14f, .14f));
 
-        playerTextBoxes[talkingPlayer].GameObject.name = $"{message}";
-        playerTextBoxes[talkingPlayer].TextFormat = message;
-
-        playerTextBoxes[talkingPlayer].Spawn();
 
 
+        CL.Info("4");
+        playerTextBoxes[talkingPlayer].textToy.GameObject.name = $"{message}";
+        playerTextBoxes[talkingPlayer].textToy.TextFormat = message;
+        playerTextBoxes[talkingPlayer].textToy.Spawn();
+        CL.Info("5");
+        ScheduleDestroy(talkingPlayer, message.Length);
+        CL.Info("6");
+        switch (type)
+        {
+            case TextType.Whisper:
+                CL.Info($"{talkingPlayer.Nickname} whispered:\n{string.Join(" ", message)}");
+                return true;
+            case TextType.Normal:
+                CreateAudioPlayer(talkingPlayer);
+                playerTextBoxes[talkingPlayer].audioSpeaker.Volume = 1.0f;
+                playerTextBoxes[talkingPlayer].audioSpeaker.MaxDistance = 10f;
+                CL.Info($"{talkingPlayer.Nickname} said:\n{string.Join(" ", message)}");
+                return true;
+            case TextType.Yelling:
+                CreateAudioPlayer(talkingPlayer);
+                playerTextBoxes[talkingPlayer].audioSpeaker.Volume = 1.5f;
+                playerTextBoxes[talkingPlayer].audioSpeaker.MaxDistance = 18f;
+                playerTextBoxes[talkingPlayer].textToy.Scale = new Vector3(-.25f, .25f, .25f);
+                CL.Info($"{talkingPlayer.Nickname} yelled:\n{string.Join(" ", message)}");
+                return true;
+            default:
+                return false;
+        }
+        CL.Info("7");
+    }
+
+    private void CreateAudioPlayer(Player talkingPlayer)
+    {
+        playerTextBoxes[talkingPlayer].audioPlayer = AudioPlayer.CreateOrGet("SpeakingAudioPlayer", onIntialCreation: p =>
+        {
+            p.transform.parent = talkingPlayer.GameObject.transform;
+            playerTextBoxes[talkingPlayer].audioSpeaker = p.AddSpeaker("Talking-Speaker", isSpatial: true, maxDistance: 15f);
+            playerTextBoxes[talkingPlayer].audioSpeaker.transform.parent = talkingPlayer.GameObject.transform;
+            playerTextBoxes[talkingPlayer].audioSpeaker.transform.localPosition = Vector3.zero;
+        });
+
+        playerTextBoxes[talkingPlayer].audioPlayer.AddClip("speakingSFX");
+    }
+
+    private void ScheduleDestroy(Player talkingPlayer, int messageLength)
+    {
         //Scheduling destruction of text toy, needs to check if its still the same one.
-        var createdToy = playerTextBoxes[talkingPlayer];
+        TextToy createdToy = playerTextBoxes[talkingPlayer].textToy;
         float delay = Mathf.Clamp(messageLength / 2f, 2f, 7f);
         Timing.CallDelayed(delay, () =>
         {
@@ -50,41 +90,6 @@ public class MakeText
                 playerTextBoxes.Remove(talkingPlayer);
             }
         });
-
-        if(type == TextType.Whisper)
-        {
-            CL.Info($"{talkingPlayer.Nickname} whispered:\n{string.Join(" ", message)}");
-            return true;
-        }
-
-        talkerAudioPlayer = AudioPlayer.CreateOrGet("SpeakingAudioPlayer", onIntialCreation: p =>
-        {
-            p.transform.parent = talkingPlayer.GameObject.transform;
-            audioSpeaker = p.AddSpeaker("Talking-Speaker", isSpatial: true, maxDistance: 15f);
-            audioSpeaker.transform.parent = talkingPlayer.GameObject.transform;
-            audioSpeaker.transform.localPosition = Vector3.zero;
-        });
-
-        talkerAudioPlayer.AddClip("speakingSFX");
-
-        if (type == TextType.Normal)
-        {
-            audioSpeaker.Volume = 1.0f;
-            audioSpeaker.MaxDistance = 10f;
-            CL.Info($"{talkingPlayer.Nickname} said:\n{string.Join(" ", message)}");
-            return true;
-        }
-
-        if (type == TextType.Yelling)
-        {
-            audioSpeaker.Volume = 1.5f;
-            audioSpeaker.MaxDistance = 18f;
-            playerTextBoxes[talkingPlayer].Scale = new Vector3(-.25f, .25f, .25f);
-            CL.Info($"{talkingPlayer.Nickname} yelled:\n{string.Join(" ", message)}");
-            return true;
-        }
-
     }
-
 }
 

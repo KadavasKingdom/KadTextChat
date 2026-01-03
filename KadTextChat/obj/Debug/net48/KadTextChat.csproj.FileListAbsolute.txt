@@ -10,3 +10,4 @@ D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\bin\Debug\net48\Command
 D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextC.ACB6A406.Up2Date
 D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.dll
 D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.pdb
+D:\KadavasKingdomGit\KadTextChat\KadTextChat\KadTextChat\obj\Debug\net48\KadTextChat.sourcelink.json

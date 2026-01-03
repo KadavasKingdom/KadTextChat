@@ -8,8 +8,8 @@ namespace KadTextChat.Commands;
 public class ForceUserCommand : ICommand
 {
     public string Command => "forcesay";
-    public string[] Aliases => ["fs", "fspeak", "ftell", "ftext"];
-    public string Description => "Use to speak in text chat!";
+    public string[] Aliases => ["fspeak", "ftell", "ftext"];
+    public string Description => "forcesay [userID] [1 - Whisper/2 - Normal/3 - Yelling] [message]";
     public bool SanitizeResponse => true;
 
 
@@ -19,7 +19,7 @@ public class ForceUserCommand : ICommand
     {
         if (arguments.Count == 0 || arguments == null)
         {
-            response = ".forcesay [userID] [message]";
+            response = "forcesay [userID] [1 - Whisper/2 - Normal/3 - Yelling] [message]";
             return false;
         }
 
@@ -33,15 +33,15 @@ public class ForceUserCommand : ICommand
         }
 
         string message = $"💬 {string.Join(" ", arguments)}";
-        int messageLength = message.Length;
-
-        if (messageLength >= PluginMain.Instance.Config.maxMessageLength)
-        {
-            response = $"Your message was too long! [{messageLength}/{PluginMain.Instance.Config.maxMessageLength} Characters]";
-            return false;
-        }
-
         message = message.Replace(arguments.ElementAt(0), "");
+
+        int textTypeInt = 0;
+
+        if (int.Parse(arguments.ElementAt(1)) <= 3)
+        {
+            textTypeInt = int.Parse(arguments.ElementAt(1));
+            message = message.Replace(arguments.ElementAt(1), "");
+        }
 
         foreach (string word in PluginMain.Instance.Config.bannedWords)
         {
@@ -53,14 +53,21 @@ public class ForceUserCommand : ICommand
             CL.Info($"Censored word not detected");
         }
 
-        //All failure checks passed, create text toy
-        if (PluginMain.Instance.makeText.CreateTextBox(target, message, MakeText.TextType.Normal))
+        MakeText.TextType textType = textTypeInt switch
+        {
+            1 => MakeText.TextType.Whisper,
+            2 => MakeText.TextType.Normal,
+            3 => MakeText.TextType.Yelling,
+            _ => MakeText.TextType.Normal,
+        };
+
+        if (PluginMain.Instance.makeText.CreateTextBox(target, message, textType))
         {
             response = $"You said:{message}";
             return true;
         }
 
-        response = $"error";
+        response = "Something went wrong!";
         return false;
     }
 }

@@ -10,7 +10,7 @@ namespace KadTextChat.Commands;
 public class Whisper : ICommand
 {
     public string Command => "whisper";
-    public string[] Aliases => ["w", "whisp", "silent", "silent", "silenttalk"];
+    public string[] Aliases => ["w", "whisp", "silent", "silenttalk"];
     public string Description => "Use to whisper in text chat!";
     public bool SanitizeResponse => true;
 
