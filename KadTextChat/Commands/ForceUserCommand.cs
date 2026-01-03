@@ -53,13 +53,24 @@ public class ForceUserCommand : ICommand
             CL.Info($"Censored word not detected");
         }
 
-        MakeText.TextType textType = textTypeInt switch
+        MakeText.TextType textType = MakeText.TextType.Normal;
+
+        switch (textTypeInt)
         {
-            1 => MakeText.TextType.Whisper,
-            2 => MakeText.TextType.Normal,
-            3 => MakeText.TextType.Yelling,
-            _ => MakeText.TextType.Normal,
-        };
+            case 1:
+                textType = MakeText.TextType.Whisper;
+                break;
+            case 2:
+                textType = MakeText.TextType.Normal;
+                break;
+            case 3:
+                textType = MakeText.TextType.Yelling;
+                break;
+            default:
+                textType = MakeText.TextType.Normal;
+                break;
+
+        }
 
         if (PluginMain.Instance.makeText.CreateTextBox(target, message, textType))
         {
