@@ -1,11 +1,18 @@
-﻿using MEC;
+﻿using LabApi.Features.Wrappers;
+using LabApiExtensions.FakeExtension;
+using MEC;
+using System.Text.RegularExpressions;
 using UnityEngine;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace KadTextChat;
 
 public class MakeText
 {
     public Dictionary<Player, TextToyInfoStore> playerTextBoxes = new Dictionary<Player, TextToyInfoStore>();
+
+    private static readonly Regex NoParseRegex = new("/noparse", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
     public enum TextType
     {
         Normal,
@@ -29,6 +36,8 @@ public class MakeText
             rotation: new Quaternion(0, 0, 0, 0),
             //Assigning here so there isn't a bad pop-in
             scale: new Vector3(-.05f, .05f, .05f));
+
+        message = $"<noparse>{NoParseRegex.Replace(message.Replace(@"\", @"\\"), "").Replace("<>", "")}</noparse>";
 
         playerTextBoxes[talkingPlayer].textToy.GameObject.name = $"{message}";
         playerTextBoxes[talkingPlayer].textToy.TextFormat = message;
@@ -61,6 +70,16 @@ public class MakeText
         }
 
         playerTextBoxes[talkingPlayer].textToy.Spawn();
+
+        //Creating component - used to make text face players
+        var comp = playerTextBoxes[talkingPlayer].textToy.GameObject.AddComponent<TextComponent>();
+        comp.scale = playerTextBoxes[talkingPlayer].textToy.Scale;
+        comp.transform.localScale = playerTextBoxes[talkingPlayer].textToy.Scale;
+        comp.hostPlayer = talkingPlayer;
+        comp.textToy = playerTextBoxes[talkingPlayer].textToy;
+
+        playerTextBoxes[talkingPlayer].textComponent = comp;
+
         ScheduleDestroy(talkingPlayer, message.Length);
         CL.Info($"{talkingPlayer.Nickname} {type}:\n{message}");
         return true;
@@ -113,5 +132,6 @@ public class MakeText
             }
         });
     }
+    
 }
 
