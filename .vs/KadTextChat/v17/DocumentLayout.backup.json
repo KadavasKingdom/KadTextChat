@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\textcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\textcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\commands\\talk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\commands\\talk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\texttoyinfostore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\texttoyinfostore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\maketext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\maketext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\pluginmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\pluginmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\textcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\textcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\texttoyinfostore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\texttoyinfostore.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\pluginmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\pluginmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\commands\\forceusercommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,10 +35,6 @@
       "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\commands\\whisper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\commands\\talk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\commands\\talk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|d:\\kadavaskingdomgit\\kadtextchat\\kadtextchat\\kadtextchat\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F48D7E8-DC32-420E-AC09-B1860CDA4E1F}|KadTextChat\\KadTextChat.csproj|solutionrelative:kadtextchat\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -46,37 +46,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "TextComponent.cs",
               "DocumentMoniker": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\TextComponent.cs",
               "RelativeDocumentMoniker": "KadTextChat\\TextComponent.cs",
               "ToolTip": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\TextComponent.cs",
               "RelativeToolTip": "KadTextChat\\TextComponent.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBUAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-03T15:44:17.711Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "TextToyInfoStore.cs",
               "DocumentMoniker": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\TextToyInfoStore.cs",
               "RelativeDocumentMoniker": "KadTextChat\\TextToyInfoStore.cs",
               "ToolTip": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\TextToyInfoStore.cs",
               "RelativeToolTip": "KadTextChat\\TextToyInfoStore.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-03T04:13:04.536Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Yell.cs",
               "DocumentMoniker": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\Commands\\Yell.cs",
               "RelativeDocumentMoniker": "KadTextChat\\Commands\\Yell.cs",
@@ -88,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Whisper.cs",
               "DocumentMoniker": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\Commands\\Whisper.cs",
               "RelativeDocumentMoniker": "KadTextChat\\Commands\\Whisper.cs",
@@ -100,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ForceUserCommand.cs",
               "DocumentMoniker": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\Commands\\ForceUserCommand.cs",
               "RelativeDocumentMoniker": "KadTextChat\\Commands\\ForceUserCommand.cs",
@@ -112,28 +112,29 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MakeText.cs",
               "DocumentMoniker": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\MakeText.cs",
               "RelativeDocumentMoniker": "KadTextChat\\MakeText.cs",
-              "ToolTip": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\MakeText.cs",
-              "RelativeToolTip": "KadTextChat\\MakeText.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAD4v0wAAABRAAAAAAAAAA==",
+              "ToolTip": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\MakeText.cs*",
+              "RelativeToolTip": "KadTextChat\\MakeText.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-03T00:28:52.93Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "Talk.cs",
               "DocumentMoniker": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\Commands\\Talk.cs",
               "RelativeDocumentMoniker": "KadTextChat\\Commands\\Talk.cs",
               "ToolTip": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\Commands\\Talk.cs",
               "RelativeToolTip": "KadTextChat\\Commands\\Talk.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA1wCEAAAA4AAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAxwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T16:58:52.651Z"
+              "WhenOpened": "2026-01-02T16:58:52.651Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -149,7 +150,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "PluginMain.cs",
               "DocumentMoniker": "D:\\KadavasKingdomGit\\KadTextChat\\KadTextChat\\KadTextChat\\PluginMain.cs",
               "RelativeDocumentMoniker": "KadTextChat\\PluginMain.cs",
@@ -157,8 +158,7 @@
               "RelativeToolTip": "KadTextChat\\PluginMain.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T16:54:39.133Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T16:54:39.133Z"
             }
           ]
         }

@@ -1,9 +1,6 @@
-﻿using LabApi.Features.Wrappers;
-using LabApiExtensions.FakeExtension;
-using MEC;
+﻿using MEC;
 using System.Text.RegularExpressions;
 using UnityEngine;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace KadTextChat;
 
@@ -80,8 +77,12 @@ public class MakeText
 
         playerTextBoxes[talkingPlayer].textComponent = comp;
 
+        playerTextBoxes[talkingPlayer].offCooldown = false;
+        CooldownReset(talkingPlayer);
+
         ScheduleDestroy(talkingPlayer, message.Length);
         CL.Info($"{talkingPlayer.Nickname} {type}:\n{message}");
+
         return true;
     }
 
@@ -132,6 +133,18 @@ public class MakeText
             }
         });
     }
-    
+
+    private void CooldownReset(Player talkingPlayer)
+    {
+        Player player = talkingPlayer;
+
+        Timing.CallDelayed(2f, () =>
+        {
+            if (playerTextBoxes.TryGetValue(player, out var currentStore))
+            {
+                playerTextBoxes[player].offCooldown = true;
+            }
+        });
+    }
 }
 

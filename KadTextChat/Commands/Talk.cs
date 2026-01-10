@@ -1,6 +1,7 @@
 ﻿using CommandSystem;
 using PlayerRoles;
 using RemoteAdmin;
+using static PlayerRoles.PlayableScps.VisionInformation;
 using ICommand = CommandSystem.ICommand;
 
 namespace KadTextChat.Commands;
@@ -15,37 +16,20 @@ public class Talk : ICommand
     public string Description => "Use to speak in text chat!";
     public bool SanitizeResponse => true;
 
-
+    public SendValidator sendValidator = new SendValidator();
     public event EventHandler CanExecuteChanged;
 
     public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
     {
-        if (!PluginMain.Instance.Config.clientCommandsEnabled)
+        string failReason = sendValidator.CheckMessage(arguments, sender);
+
+        if (failReason != string.Empty)
         {
-            response = "Client commands are disabled!";
+            response = failReason;
             return false;
         }
 
-        if (sender is not PlayerCommandSender playerSender)
-        {
-            response = "This command can only be ran by a player!";
-            return false;
-        }
-
-        if (!playerSender.ReferenceHub.IsHuman() && playerSender.ReferenceHub.GetRoleId() != RoleTypeId.Scp049 && playerSender.ReferenceHub.GetRoleId() != RoleTypeId.Scp0492)
-        {
-            response = "This command is only supported for humans, SCP-049 and SCP-049-2!";
-            return false;
-        }
-
-
-        if (arguments.Count == 0)
-        {
-            response = "You must provide a message to say!";
-            return false;
-        }
-
-        Player talkingPlayer = Player.Get(playerSender);
+        Player talkingPlayer = Player.Get(sender);
         string message = $"💬 {string.Join(" ", arguments)}";
         int messageLength = message.Length;
 
