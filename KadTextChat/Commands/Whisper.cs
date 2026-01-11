@@ -29,7 +29,7 @@ public class Whisper : ICommand
         }
 
         Player talkingPlayer = Player.Get(sender);
-        string message = $"💬 {string.Join(" ", arguments)}";
+        string message = $"{string.Join(" ", arguments)}";
         int messageLength = message.Length;
 
         if (messageLength >= PluginMain.Instance.Config.maxWhisperLength)
@@ -50,7 +50,7 @@ public class Whisper : ICommand
         //All failure checks passed, create text toy
         if (PluginMain.Instance.makeText.CreateTextBox(talkingPlayer, message, MakeText.TextType.Whisper))
         {
-            response = $"You said:{message}";
+            response = $"You said: {message}";
             return true;
         }
 

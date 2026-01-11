@@ -29,7 +29,7 @@ public class Yell : ICommand
         }
 
         Player talkingPlayer = Player.Get(sender);
-        string message = $"💬 {string.Join(" ", arguments)}";
+        string message = $"{string.Join(" ", arguments)}";
         int messageLength = message.Length;
 
         if (messageLength >= PluginMain.Instance.Config.maxYellLength)
@@ -50,7 +50,7 @@ public class Yell : ICommand
         //All failure checks passed, create text toy
         if (PluginMain.Instance.makeText.CreateTextBox(talkingPlayer, message, MakeText.TextType.Yelling))
         {
-            response = $"You said:{message}";
+            response = $"You said: {message}";
             return true;
         }
 

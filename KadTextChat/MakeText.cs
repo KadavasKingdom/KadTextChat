@@ -37,8 +37,8 @@ public class MakeText
 
         message = $"<noparse>{NoParseRegex.Replace(message.Replace(@"\", @"\\"), "").Replace("<>", "")}</noparse>";
 
-        playerTextBoxes[talkingPlayer].textToy.GameObject.name = $"{message}";
-        playerTextBoxes[talkingPlayer].textToy.TextFormat = message;
+        playerTextBoxes[talkingPlayer].textToy.GameObject.name = $"💬 {message}";
+        playerTextBoxes[talkingPlayer].textToy.TextFormat = $"💬 {message}";
 
         CreateAudioPlayer(talkingPlayer, type);
 
@@ -78,7 +78,7 @@ public class MakeText
 
         playerTextBoxes[talkingPlayer].textComponent = comp;
 
-        playerTextBoxes[talkingPlayer].recentMessages += 1f;
+        playerTextBoxes[talkingPlayer].recentMessages += 1;
         CooldownReset(talkingPlayer);
 
         ScheduleDestroy(talkingPlayer, message.Length);
@@ -145,11 +145,11 @@ public class MakeText
     {
         Player player = talkingPlayer;
 
-        Timing.CallDelayed(3f, () =>
+        Timing.CallDelayed(6f, () =>
         {
             if (playerTextBoxes.TryGetValue(player, out var currentStore))
             {
-                playerTextBoxes[player].recentMessages -= 0.5f;
+                playerTextBoxes[player].recentMessages -= 1;
             }
         });
     }
