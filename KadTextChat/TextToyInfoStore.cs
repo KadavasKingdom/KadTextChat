@@ -9,5 +9,6 @@ public sealed class TextToyInfoStore
     public AudioPlayer audioPlayer = null;
     public Speaker audioSpeaker = null;
     public TextComponent textComponent;
+    public int recentMessages = 0;
 }
 

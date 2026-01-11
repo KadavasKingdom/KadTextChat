@@ -32,7 +32,7 @@ public class ForceUserCommand : ICommand
             return false;
         }
 
-        string message = $"💬 {string.Join(" ", arguments)}";
+        string message = $"{string.Join(" ", arguments)}";
         message = message.Replace(arguments.ElementAt(0), "");
 
         int textTypeInt = 0;
@@ -50,7 +50,6 @@ public class ForceUserCommand : ICommand
                 CL.Info($"Censored word detected: {word}");
                 message = message.Replace(word, new string('*', word.Length));
             }
-            CL.Info($"Censored word not detected");
         }
 
         MakeText.TextType textType = MakeText.TextType.Normal;
@@ -74,7 +73,7 @@ public class ForceUserCommand : ICommand
 
         if (PluginMain.Instance.makeText.CreateTextBox(target, message, textType))
         {
-            response = $"You said:{message}";
+            response = $"You said: {message}";
             return true;
         }
 

@@ -361,3 +361,14 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/KadTextChat/obj/Debug
+/.vs/KadTextChat/v17
+.vs/KadTextChat/v17/.suo
+.vs/KadTextChat/v17/DocumentLayout.backup.json
+.vs/KadTextChat/v17/DocumentLayout.json
+/.vs/KadTextChat/DesignTimeBuild
+/KadTextChat/obj/Debug/net48
+KadTextChat/obj/Debug/net48/KadTextChat.csproj.AssemblyReference.cache
+KadTextChat/obj/Debug/net48/KadTextChat.csproj.CoreCompileInputs.cache
+KadTextChat/obj/Debug/net48/KadTextChat.sourcelink.json
+.vs/KadTextChat/DesignTimeBuild/.dtbcache.v2

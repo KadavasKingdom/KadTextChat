@@ -15,42 +15,26 @@ public class Whisper : ICommand
     public string Description => "Use to whisper in text chat!";
     public bool SanitizeResponse => true;
 
-
+    public SendValidator sendValidator = new SendValidator();
     public event EventHandler CanExecuteChanged;
 
     public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
     {
-        if (!PluginMain.Instance.Config.clientCommandsEnabled)
+        string failReason = sendValidator.CheckMessage(arguments, sender);
+
+        if (failReason != string.Empty || failReason == null)
         {
-            response = "Client commands are disabled!";
+            response = failReason;
             return false;
         }
 
-        if (sender is not PlayerCommandSender playerSender)
-        {
-            response = "This command can only be ran by a player!";
-            return false;
-        }
-
-        if (arguments.Count == 0)
-        {
-            response = "You must provide a message to say!";
-            return false;
-        }
-
-        if (!playerSender.ReferenceHub.IsHuman() && playerSender.ReferenceHub.GetRoleId() != RoleTypeId.Scp049 && playerSender.ReferenceHub.GetRoleId() != RoleTypeId.Scp0492)
-        {
-            response = "This command is only supported for humans, SCP-049 and SCP-049-2!";
-            return false;
-        }
-
-        Player talkingPlayer = Player.Get(playerSender);
-        string message = $"💬 {string.Join(" ", arguments)}";
+        Player talkingPlayer = Player.Get(sender);
+        string message = $"{string.Join(" ", arguments)}";
         int messageLength = message.Length;
 
-        if (messageLength >= PluginMain.Instance.Config.maxMessageLength)
+        if (messageLength >= PluginMain.Instance.Config.maxWhisperLength)
         {
-            response = $"Your message was too long! [{messageLength}/{PluginMain.Instance.Config.maxWhisperLength} Characters] - use .s to talk louder and use more characters";
+            response = $"Your message was too long! [{messageLength}/{PluginMain.Instance.Config.maxWhisperLength} Characters] - use .talk to talk louder and use more characters";
             return false;
         }
 
@@ -61,13 +45,12 @@ public class Whisper : ICommand
                 CL.Info($"Censored word detected: {word}");
                 message = message.Replace(word, new string('*', word.Length));
             }
-            CL.Info($"Censored word not detected");
         }
 
         //All failure checks passed, create text toy
         if (PluginMain.Instance.makeText.CreateTextBox(talkingPlayer, message, MakeText.TextType.Whisper))
         {
-            response = $"You said:{message}";
+            response = $"You said: {message}";
             return true;
         }
 
