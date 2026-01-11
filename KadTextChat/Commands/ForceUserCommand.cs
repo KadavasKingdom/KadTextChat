@@ -50,7 +50,6 @@ public class ForceUserCommand : ICommand
                 CL.Info($"Censored word detected: {word}");
                 message = message.Replace(word, new string('*', word.Length));
             }
-            CL.Info($"Censored word not detected");
         }
 
         MakeText.TextType textType = MakeText.TextType.Normal;

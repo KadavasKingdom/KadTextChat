@@ -22,7 +22,7 @@ public class Whisper : ICommand
     {
         string failReason = sendValidator.CheckMessage(arguments, sender);
 
-        if (failReason != string.Empty)
+        if (failReason != string.Empty || failReason == null)
         {
             response = failReason;
             return false;
@@ -32,9 +32,9 @@ public class Whisper : ICommand
         string message = $"💬 {string.Join(" ", arguments)}";
         int messageLength = message.Length;
 
-        if (messageLength >= PluginMain.Instance.Config.maxMessageLength)
+        if (messageLength >= PluginMain.Instance.Config.maxWhisperLength)
         {
-            response = $"Your message was too long! [{messageLength}/{PluginMain.Instance.Config.maxWhisperLength} Characters] - use .s to talk louder and use more characters";
+            response = $"Your message was too long! [{messageLength}/{PluginMain.Instance.Config.maxWhisperLength} Characters] - use .talk to talk louder and use more characters";
             return false;
         }
 
@@ -45,7 +45,6 @@ public class Whisper : ICommand
                 CL.Info($"Censored word detected: {word}");
                 message = message.Replace(word, new string('*', word.Length));
             }
-            CL.Info($"Censored word not detected");
         }
 
         //All failure checks passed, create text toy

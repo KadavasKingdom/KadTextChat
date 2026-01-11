@@ -23,7 +23,7 @@ public class Talk : ICommand
     {
         string failReason = sendValidator.CheckMessage(arguments, sender);
 
-        if (failReason != string.Empty)
+        if (failReason != string.Empty || failReason == null)
         {
             response = failReason;
             return false;
@@ -46,7 +46,6 @@ public class Talk : ICommand
                 CL.Info($"Censored word detected: {word}");
                 message = message.Replace(word, new string('*', word.Length));
             }
-            CL.Info($"Censored word not detected");
         }
 
         //All failure checks passed, create text toy

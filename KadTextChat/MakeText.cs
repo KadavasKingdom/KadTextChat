@@ -1,4 +1,5 @@
-﻿using MEC;
+﻿using LabApi.Features.Wrappers;
+using MEC;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
@@ -32,36 +33,36 @@ public class MakeText
             parent: talkingPlayer.GameObject.transform,
             rotation: new Quaternion(0, 0, 0, 0),
             //Assigning here so there isn't a bad pop-in
-            scale: new Vector3(-.05f, .05f, .05f));
+            scale: new Vector3(.05f, .05f, .05f));
 
         message = $"<noparse>{NoParseRegex.Replace(message.Replace(@"\", @"\\"), "").Replace("<>", "")}</noparse>";
 
         playerTextBoxes[talkingPlayer].textToy.GameObject.name = $"{message}";
         playerTextBoxes[talkingPlayer].textToy.TextFormat = message;
 
-
         CreateAudioPlayer(talkingPlayer, type);
+
         switch (type)
         {
             case TextType.Whisper:
                 playerTextBoxes[talkingPlayer].audioSpeaker.Volume = 0.2f;
                 playerTextBoxes[talkingPlayer].audioSpeaker.MaxDistance = 2f;
-                playerTextBoxes[talkingPlayer].textToy.Scale = new Vector3(-.08f, .08f, .08f);
+                playerTextBoxes[talkingPlayer].textToy.Scale = new Vector3(.08f, .08f, .08f);
                 break;
             case TextType.Normal:
                 playerTextBoxes[talkingPlayer].audioSpeaker.Volume = 1.0f;
                 playerTextBoxes[talkingPlayer].audioSpeaker.MaxDistance = 10f;
-                playerTextBoxes[talkingPlayer].textToy.Scale = new Vector3(-.12f, .12f, .12f);
+                playerTextBoxes[talkingPlayer].textToy.Scale = new Vector3(.12f, .12f, .12f);
                 break;
             case TextType.Yelling:
                 playerTextBoxes[talkingPlayer].audioSpeaker.Volume = 1.7f;
                 playerTextBoxes[talkingPlayer].audioSpeaker.MaxDistance = 20f;
-                playerTextBoxes[talkingPlayer].textToy.Scale = new Vector3(-.17f, .17f, .17f);
+                playerTextBoxes[talkingPlayer].textToy.Scale = new Vector3(.17f, .17f, .17f);
                 break;
             default:
                 playerTextBoxes[talkingPlayer].audioSpeaker.Volume = 1.0f;
                 playerTextBoxes[talkingPlayer].audioSpeaker.MaxDistance = 10f;
-                playerTextBoxes[talkingPlayer].textToy.Scale = new Vector3(-.15f, .15f, .15f);
+                playerTextBoxes[talkingPlayer].textToy.Scale = new Vector3(.15f, .15f, .15f);
                 CL.Info("Unassigned text type case!!! Fix me!!");
                 break;
         }
@@ -77,11 +78,17 @@ public class MakeText
 
         playerTextBoxes[talkingPlayer].textComponent = comp;
 
-        playerTextBoxes[talkingPlayer].offCooldown = false;
+        playerTextBoxes[talkingPlayer].recentMessages += 1f;
         CooldownReset(talkingPlayer);
 
         ScheduleDestroy(talkingPlayer, message.Length);
         CL.Info($"{talkingPlayer.Nickname} {type}:\n{message}");
+
+        foreach(Player observer in Player.ReadyList.Where(p => p != talkingPlayer && p.IsAlive))
+        {
+            if (Vector3.Distance(talkingPlayer.Position, observer.Position) <= playerTextBoxes[talkingPlayer].audioSpeaker.MaxDistance)
+                observer.SendConsoleMessage($"<color=yellow>{talkingPlayer.Nickname} {type}:</color> {message}", "yellow");
+        }
 
         return true;
     }
@@ -138,11 +145,11 @@ public class MakeText
     {
         Player player = talkingPlayer;
 
-        Timing.CallDelayed(2f, () =>
+        Timing.CallDelayed(3f, () =>
         {
             if (playerTextBoxes.TryGetValue(player, out var currentStore))
             {
-                playerTextBoxes[player].offCooldown = true;
+                playerTextBoxes[player].recentMessages -= 0.5f;
             }
         });
     }

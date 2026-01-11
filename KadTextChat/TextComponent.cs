@@ -32,7 +32,7 @@ namespace KadTextChat
 
             foreach (Player player in Player.ReadyList.Where(p => p != hostPlayer))
             {
-                if (Vector3.Distance(textTransform.position, player.Position) > 25)
+                if (Vector3.Distance(textTransform.position, player.Position) > 20)
                 {
                     player.SendFakeSyncVar(textToy.Base, 4, Vector3.zero);
                     continue;
@@ -48,8 +48,8 @@ namespace KadTextChat
         {
             Vector3 direction = observer.Position - transform.position;
             direction.y = 0;
-            Quaternion rotation = Quaternion.LookRotation(direction);
-            transform.rotation = rotation;
+            Quaternion rotation = Quaternion.LookRotation(-direction);
+            textTransform.rotation = rotation;
 
             observer.SendFakeSyncVar(textToy.Base, 2, transform.localRotation);
         }
