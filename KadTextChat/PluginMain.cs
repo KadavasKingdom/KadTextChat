@@ -1,4 +1,5 @@
-﻿using LabApi.Loader.Features.Plugins;
+﻿using LabApi.Loader;
+using LabApi.Loader.Features.Plugins;
 using LabApi.Loader.Features.Plugins.Enums;
 
 namespace KadTextChat;
@@ -24,6 +25,17 @@ public class PluginMain : Plugin<Config>
     public override void Disable()
     {
         Instance = null;
+    }
+
+    public override void LoadConfigs()
+    {
+        if (!this.TryLoadConfig(ConfigFileName, out Config config, true))
+        {
+            CL.Warn("Failed to load the configuration file, using default values.");
+            config = new Config();
+        }
+
+        Config = config;
     }
 }
 
